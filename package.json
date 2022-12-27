@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "nx",
-    "postinstall": "node ./decorate-angular-cli.js"
+    "postinstall": "node ./decorate-angular-cli.js",
+    "serve:all": "npx nx run-many --target=serve"
   },
   "private": true,
   "dependencies": {
