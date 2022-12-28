@@ -96,5 +96,6 @@
       }
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": ["auth", "intake", "panel"]
 }
