@@ -6,9 +6,6 @@ module.exports = withModuleFederation({
     ['auth', 'https://exquisite-paletas-ea1d46.netlify.app/auth'],
     ['intake', 'https://exquisite-paletas-ea1d46.netlify.app/intake'],
     ['panel', 'https://exquisite-paletas-ea1d46.netlify.app/panel'],
-    // ['auth', 'http://127.0.0.1:3000/auth'],
-    // ['intake', 'http://127.0.0.1:3000/intake'],
-    // ['panel', 'http://127.0.0.1:3000/panel'],
   ]
   /*
    * Remote overrides for production.
