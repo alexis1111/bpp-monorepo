@@ -3,10 +3,10 @@ const config = require('./module-federation.config');
 module.exports = withModuleFederation({
   ...config,
   remotes: [
-     ['auth', 'https://exquisite-paletas-ea1d46.netlify.app:4201'],
+     ['auth', 'https://exquisite-paletas-ea1d46.netlify.app'],
      ['core', 'https://exquisite-paletas-ea1d46.netlify.app'],
-     ['intake', 'https://exquisite-paletas-ea1d46.netlify.app:4202'],
-     ['panel', 'https://exquisite-paletas-ea1d46.netlify.app:4203'],
+     ['intake', 'https://exquisite-paletas-ea1d46.netlify.app'],
+     ['panel', 'https://exquisite-paletas-ea1d46.netlify.app'],
   ]
   /*
    * Remote overrides for production.
