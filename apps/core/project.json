@@ -87,7 +87,15 @@
         "jestConfig": "apps/core/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "rm -rf production && mkdir production && cp -r dist/apps/core/* production && cp -r dist/apps/{auth,panel,intake} production"
+      }
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": ["auth", "intake", "panel"]
 }
