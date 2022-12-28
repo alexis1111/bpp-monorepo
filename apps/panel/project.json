@@ -6,7 +6,7 @@
   "prefix": "bpp-monorepo",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/panel",
@@ -17,7 +17,10 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/panel/src/favicon.ico", "apps/panel/src/assets"],
         "styles": ["apps/panel/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/panel/webpack.config.js"
+        }
       },
       "configurations": {
         "production": {
@@ -33,7 +36,10 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/panel/webpack.prod.config.js"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -47,17 +53,20 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "panel:build:production"
         },
         "development": {
-          "browserTarget": "panel:build:development",
-          "port": 4201
+          "browserTarget": "panel:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4203,
+        "publicHost": "http://localhost:4203"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -78,6 +87,22 @@
       "options": {
         "jestConfig": "apps/panel/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/angular:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "panel:build",
+        "port": 4203
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "panel:build:development"
+        },
+        "production": {
+          "buildTarget": "panel:build:production"
+        }
       }
     }
   },

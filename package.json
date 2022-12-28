@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js",
-    "serve:all": "npx nx run-many --target=serve"
+    "serve:all": "npx nx serve core",
+    "build:all": "npx nx build core"
   },
   "private": true,
   "dependencies": {

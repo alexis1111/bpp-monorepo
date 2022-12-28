@@ -6,7 +6,7 @@
   "prefix": "bpp-monorepo",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/intake",
@@ -17,7 +17,10 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/intake/src/favicon.ico", "apps/intake/src/assets"],
         "styles": ["apps/intake/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/intake/webpack.config.js"
+        }
       },
       "configurations": {
         "production": {
@@ -33,7 +36,10 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/intake/webpack.prod.config.js"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -47,17 +53,20 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "intake:build:production"
         },
         "development": {
-          "browserTarget": "intake:build:development",
-          "port": 4202
+          "browserTarget": "intake:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -78,6 +87,22 @@
       "options": {
         "jestConfig": "apps/intake/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/angular:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "intake:build",
+        "port": 4202
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "intake:build:development"
+        },
+        "production": {
+          "buildTarget": "intake:build:production"
+        }
       }
     }
   },

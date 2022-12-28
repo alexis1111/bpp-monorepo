@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 
-import { exampleProducts } from '@bpp-monorepo/products';
-
 @Component({
   selector: 'bpp-monorepo-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  template: '<router-outlet></router-outlet>',
 })
-export class AppComponent {
-  title = 'bridge';
-  products = exampleProducts;
-}
+export class AppComponent {}
