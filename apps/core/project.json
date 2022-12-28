@@ -92,7 +92,7 @@
       "executor": "nx:run-commands",
       "outputs": [],
       "options": {
-        "command": "mv dist/apps/{auth,panel,intake} dist/apps/core"
+        "command": "mv dist/apps/auth dist/apps/core && mv dist/apps/panel dist/apps/core && mv dist/apps/intake dist/apps/core"
       }
     }
   },
