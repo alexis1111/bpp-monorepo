@@ -17,8 +17,7 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/core/src/favicon.ico",
-          "apps/core/src/assets",
-          "apps/core/src/_redirects"
+          "apps/core/src/assets"
         ],
         "styles": ["apps/core/src/styles.scss"],
         "scripts": [],
