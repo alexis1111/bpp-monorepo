@@ -15,7 +15,11 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/panel/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/panel/src/favicon.ico", "apps/panel/src/assets"],
+        "assets": [
+          "apps/panel/src/favicon.ico",
+          "apps/panel/src/assets",
+          "apps/panel/src/_redirects"
+        ],
         "styles": ["apps/panel/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
