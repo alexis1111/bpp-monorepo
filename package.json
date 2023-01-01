@@ -5,8 +5,10 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js",
-    "serve": "npx nx serve core",
-    "build": "npx nx build core"
+    "serve": "nx serve core",
+    "build": "nx build core",
+    "deploy": "npx nx run core:deploy",
+    "graph": "nx graph"
   },
   "private": true,
   "dependencies": {

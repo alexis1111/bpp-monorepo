@@ -15,10 +15,7 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/core/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/core/src/favicon.ico",
-          "apps/core/src/assets"
-        ],
+        "assets": ["apps/core/src/favicon.ico", "apps/core/src/assets"],
         "styles": ["apps/core/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
@@ -92,10 +89,11 @@
       }
     },
     "deploy": {
-      "executor": "nx:run-commands",
+      "executor": "@nrwl/workspace:run-commands",
       "outputs": [],
       "options": {
-        "command": "mv dist/apps/auth dist/apps/core && mv dist/apps/panel dist/apps/core && mv dist/apps/intake dist/apps/core"
+        "command": "rm -rf production && mkdir production && cp -r ./apps/core/* production && cp -r ./apps/{auth,intake,panel} production",
+        "cwd": "dist"
       }
     }
   },
