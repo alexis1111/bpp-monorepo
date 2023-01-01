@@ -89,11 +89,19 @@
       }
     },
     "deploy": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "outputs": [],
       "options": {
-        "command": "rm -rf production && mkdir production && cp -r ./apps/core/* production && cp -r ./apps/{auth,intake,panel} production",
-        "cwd": "dist"
+        "commands": [
+          "rm -rf production",
+          "mkdir production",
+          "cp -r ./apps/core/* production",
+          "cp -r ./apps/auth production",
+          "cp -r ./apps/intake production",
+          "cp -r ./apps/panel production"
+        ],
+        "cwd": "dist",
+        "parallel": false
       }
     }
   },
